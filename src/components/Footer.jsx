@@ -105,7 +105,9 @@ const Footer = () => {
                                 </svg>
                             </a>
                             <a
-                                href="#"
+                                href="https://www.instagram.com/mehmet.kucukcelebi/"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="w-10 h-10 bg-netflix-gray rounded-full flex items-center justify-center hover:bg-netflix-red transition-colors"
                                 aria-label="Instagram"
                             >
