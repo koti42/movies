@@ -82,7 +82,7 @@ const Home = () => {
                 <>
                     <Hero items={heroItems} mediaType="movie" />
 
-                    <div className="relative -mt-32 z-10">
+                    <div className="relative -mt-8 md:-mt-32 z-10">
                         <MovieRow title="Trending Now" items={trendingMovies} mediaType="movie" />
                         <MovieRow title="Popular Movies" items={popularMovies} mediaType="movie" />
                         <MovieRow title="Now Playing" items={nowPlayingMovies} mediaType="movie" />

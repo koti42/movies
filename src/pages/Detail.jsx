@@ -98,7 +98,7 @@ const Detail = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-netflix-black via-netflix-black/60 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-netflix-black/90 via-netflix-black/50 to-transparent" />
 
-                <div className="absolute inset-0 flex items-end pb-12 md:pb-24">
+                <div className="absolute inset-0 flex items-end pb-16 md:pb-32">
                     <div className="px-4 md:px-12 max-w-4xl">
                         <h1 className="text-4xl md:text-6xl font-bold mb-4 text-shadow">{displayTitle}</h1>
 
@@ -134,7 +134,7 @@ const Detail = () => {
                             </div>
                         )}
 
-                        <div className="flex gap-4">
+                        <div className="flex gap-4 mb-4">
                             {trailer && (
                                 <button
                                     onClick={() => setShowVideo(true)}
@@ -177,7 +177,7 @@ const Detail = () => {
             )}
 
             {/* Content */}
-            <div className="px-4 md:px-12 -mt-32 relative z-10">
+            <div className="px-4 md:px-12 -mt-8 md:-mt-32 relative z-10">
                 <div className="grid md:grid-cols-3 gap-8 mb-12">
                     <div className="md:col-span-2 space-y-6">
                         <div>

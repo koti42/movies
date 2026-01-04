@@ -44,7 +44,7 @@ const SearchDropdown = ({ query, onClose }) => {
 
     const handleResultClick = (item) => {
         const type = item.media_type === 'movie' ? 'movie' : 'tv';
-        navigate(`/detail/${type}/${item.id}`);
+        navigate(`/${type}/${item.id}`);
         onClose();
     };
 
