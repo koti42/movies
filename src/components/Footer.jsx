@@ -118,7 +118,7 @@ const Footer = () => {
                 </div>
 
                 <div className="border-t border-netflix-gray pt-8 text-center text-gray-400 text-sm">
-                    <p>© 2026 MovieFlix. All rights reserved. Powered by TMDB.</p>
+                    <p>© 2026 MemoFlix. All rights reserved. Powered by TMDB.</p>
                     <p className="mt-2">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
                     <p className="mt-2">Developed by <span className="text-netflix-red font-semibold">Mehmet Küçükçelebi</span></p>
                 </div>
