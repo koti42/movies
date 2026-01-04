@@ -1,8 +1,8 @@
-# MovieFlix 🎬
+# MemoFlix 🎬
 
 A modern, Netflix-inspired movie and TV show discovery application built with React, Vite, and Tailwind CSS. Powered by The Movie Database (TMDB) API.
 
-![MovieFlix](https://img.shields.io/badge/React-18.3-blue) ![Vite](https://img.shields.io/badge/Vite-Latest-purple) ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-cyan)
+![MemoFlix](https://img.shields.io/badge/React-18.3-blue) ![Vite](https://img.shields.io/badge/Vite-Latest-purple) ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-cyan)
 
 ## ✨ Features
 
