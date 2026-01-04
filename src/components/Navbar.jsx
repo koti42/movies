@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import SearchDropdown from './SearchDropdown';
+import { useLanguage } from '../context/LanguageContext';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const [showLanguages, setShowLanguages] = useState(false);
     const navigate = useNavigate();
+    const { getCurrentLanguage, changeLanguage, languages } = useLanguage();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -113,6 +116,54 @@ const Navbar = () => {
                             </svg>
                         </button>
                     )}
+
+                    {/* Language Selector */}
+                    <div className="relative">
+                        <button
+                            onClick={() => setShowLanguages(!showLanguages)}
+                            className="flex items-center gap-2 text-netflix-lightGray hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-netflix-gray/50"
+                            aria-label="Select Language"
+                        >
+                            <span className="text-xl">{getCurrentLanguage().flag}</span>
+                            <span className="hidden md:inline text-sm font-medium">{getCurrentLanguage().name}</span>
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        {showLanguages && (
+                            <>
+                                {/* Backdrop */}
+                                <div
+                                    className="fixed inset-0 z-40"
+                                    onClick={() => setShowLanguages(false)}
+                                />
+
+                                {/* Dropdown */}
+                                <div className="absolute right-0 mt-2 w-48 bg-netflix-gray/95 backdrop-blur-md rounded-lg shadow-2xl border border-gray-700 overflow-hidden z-50 animate-fade-in">
+                                    {languages.map((lang) => (
+                                        <button
+                                            key={lang.code}
+                                            onClick={() => {
+                                                changeLanguage(lang.code);
+                                                setShowLanguages(false);
+                                            }}
+                                            className={`w-full flex items-center gap-3 px-4 py-3 hover:bg-netflix-red/20 transition-colors ${getCurrentLanguage().code === lang.code ? 'bg-netflix-red/30 text-white' : 'text-netflix-lightGray'
+                                                }`}
+                                        >
+                                            <span className="text-xl">{lang.flag}</span>
+                                            <span className="font-medium">{lang.name}</span>
+                                            {getCurrentLanguage().code === lang.code && (
+                                                <svg className="w-5 h-5 ml-auto text-netflix-red" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                                </svg>
+                                            )}
+                                        </button>
+                                    ))}
+                                </div>
+                            </>
+                        )}
+                    </div>
                 </div>
             </div>
         </nav>

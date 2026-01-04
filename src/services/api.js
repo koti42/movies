@@ -4,6 +4,9 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
 const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 
+const getLanguage = () => {
+    return localStorage.getItem('preferredLanguage') || 'tr-TR';
+};
 
 const api = axios.create({
     baseURL: BASE_URL,
@@ -13,14 +16,21 @@ const api = axios.create({
     },
 });
 
-// Image URLs
+api.interceptors.request.use((config) => {
+    config.params = {
+        ...config.params,
+        language: getLanguage(),
+    };
+    return config;
+});
+
+
 export const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 export const getImageUrl = (path, size = 'original') => {
     if (!path) return '/placeholder.jpg';
     return `${IMAGE_BASE_URL}/${size}${path}`;
 };
 
-// Movies
 export const getTrendingMovies = async (timeWindow = 'day') => {
     const response = await api.get(`/trending/movie/${timeWindow}`);
     return response.data;
@@ -55,7 +65,6 @@ export const getMovieDetails = async (movieId) => {
     return response.data;
 };
 
-// TV Shows
 export const getTrendingTVShows = async (timeWindow = 'day') => {
     const response = await api.get(`/trending/tv/${timeWindow}`);
     return response.data;
@@ -80,7 +89,6 @@ export const getTVShowDetails = async (tvId) => {
     return response.data;
 };
 
-// Search
 export const searchMulti = async (query, page = 1) => {
     const response = await api.get('/search/multi', {
         params: { query, page },
@@ -102,7 +110,6 @@ export const searchTVShows = async (query, page = 1) => {
     return response.data;
 };
 
-// Genres
 export const getMovieGenres = async () => {
     const response = await api.get('/genre/movie/list');
     return response.data;
@@ -120,7 +127,7 @@ export const getMoviesByGenre = async (genreId, page = 1) => {
     return response.data;
 };
 
-// Person
+
 export const getPersonDetails = async (personId) => {
     const response = await api.get(`/person/${personId}`, {
         params: {
