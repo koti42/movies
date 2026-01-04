@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SearchProvider } from './context/SearchContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WelcomeModal from './components/WelcomeModal';
 import Home from './pages/Home';
 import Movies from './pages/Movies';
 import TVShows from './pages/TVShows';
@@ -14,6 +15,7 @@ function App() {
     <SearchProvider>
       <Router>
         <div className="min-h-screen flex flex-col">
+          <WelcomeModal />
           <Navbar />
           <main className="flex-grow">
             <Routes>
