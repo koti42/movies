@@ -5,7 +5,7 @@ const ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
 const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 
 const getLanguage = () => {
-    return localStorage.getItem('preferredLanguage') || 'tr-TR';
+    return localStorage.getItem('preferredLanguage') || 'en-US';
 };
 
 const api = axios.create({

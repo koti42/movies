@@ -9,7 +9,7 @@ const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [showLanguages, setShowLanguages] = useState(false);
     const navigate = useNavigate();
-    const { getCurrentLanguage, changeLanguage, languages } = useLanguage();
+    const { getCurrentLanguage, changeLanguage, languages, t } = useLanguage();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -42,22 +42,22 @@ const Navbar = () => {
                             <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
                         </svg>
                     </div>
-                    <span className="text-2xl font-bold text-netflix-red">MovieFlix</span>
+                    <span className="text-2xl font-bold text-netflix-red">MemoFlix</span>
                 </Link>
 
                 {/* Navigation Links */}
                 <div className="hidden md:flex items-center gap-6">
                     <Link to="/" className="text-netflix-lightGray hover:text-white transition-colors duration-200 font-medium">
-                        Home
+                        {t('home')}
                     </Link>
                     <Link to="/movies" className="text-netflix-lightGray hover:text-white transition-colors duration-200 font-medium">
-                        Movies
+                        {t('movies')}
                     </Link>
                     <Link to="/tv-shows" className="text-netflix-lightGray hover:text-white transition-colors duration-200 font-medium">
-                        TV Shows
+                        {t('tvShows')}
                     </Link>
                     <Link to="/popular" className="text-netflix-lightGray hover:text-white transition-colors duration-200 font-medium">
-                        Popular
+                        {t('popular')}
                     </Link>
                 </div>
 
@@ -70,7 +70,7 @@ const Navbar = () => {
                                     type="text"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    placeholder="Search movies, TV shows..."
+                                    placeholder={t('searchPlaceholder')}
                                     className="bg-netflix-gray/80 backdrop-blur-md text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-netflix-red w-48 md:w-64"
                                     autoFocus
                                 />

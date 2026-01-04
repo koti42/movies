@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { getTranslation } from '../utils/translations';
+
 
 const LanguageContext = createContext();
 
@@ -23,7 +25,7 @@ export const languages = [
 
 export const LanguageProvider = ({ children }) => {
     const [language, setLanguage] = useState(() => {
-        return localStorage.getItem('preferredLanguage') || 'tr-TR';
+        return localStorage.getItem('preferredLanguage') || 'en-US';
     });
 
     useEffect(() => {
@@ -36,11 +38,15 @@ export const LanguageProvider = ({ children }) => {
     };
 
     const getCurrentLanguage = () => {
-        return languages.find(lang => lang.code === language) || languages[1]; // Default to Turkish
+        return languages.find(lang => lang.code === language) || languages[0]; // Default to English
+    };
+
+    const t = (key) => {
+        return getTranslation(key, language);
     };
 
     return (
-        <LanguageContext.Provider value={{ language, changeLanguage, getCurrentLanguage, languages }}>
+        <LanguageContext.Provider value={{ language, changeLanguage, getCurrentLanguage, languages, t }}>
             {children}
         </LanguageContext.Provider>
     );

@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 const WelcomeModal = () => {
+    const { t } = useLanguage();
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        const hasVisited = localStorage.getItem('hasVisitedMovieFlix');
+        const hasVisited = localStorage.getItem('hasVisitedMemoFlix');
         if (!hasVisited) {
             setIsOpen(true);
         }
     }, []);
 
     const handleClose = () => {
-        localStorage.setItem('hasVisitedMovieFlix', 'true');
+        localStorage.setItem('hasVisitedMemoFlix', 'true');
         setIsOpen(false);
     };
 
@@ -47,12 +49,12 @@ const WelcomeModal = () => {
 
                     {/* Title */}
                     <h2 className="text-3xl font-bold text-white mb-3">
-                        Welcome to <span className="text-netflix-red">MovieFlix</span>
+                        {t('welcomeTitle')}
                     </h2>
 
                     {/* Description */}
                     <p className="text-gray-300 mb-6 leading-relaxed">
-                        Discover thousands of movies and TV shows. Browse trending content, search for your favorites, and explore detailed information about cast, crew, and more.
+                        {t('welcomeDescription')}
                     </p>
 
                     {/* Developer credit */}
@@ -94,7 +96,7 @@ const WelcomeModal = () => {
                         onClick={handleClose}
                         className="w-full bg-netflix-red hover:bg-netflix-red/90 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
                     >
-                        Start Exploring
+                        {t('startExploring')}
                     </button>
                 </div>
             </div>
